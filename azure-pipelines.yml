@@ -19,7 +19,7 @@ steps:
     resourceGroupName: 'arm-vscode'
     location: 'Australia East'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/alexfrq/arm-vscode/master/vs_code_linked_template/azuredeploy.json'
+    csmFileLink: 'https://raw.githubusercontent.com/alexfrq/arm-vscode/master/vs_code_linked_template/azuredeploy.json?token=ACWF43UDEFL66HFOLNG6B3LBHRO2A'
     overrideParameters: '--parameter storageAccountNamePrefix=dev'
     deploymentMode: 'Incremental'
     deploymentName: 'DeployPipelineTemplate'
