@@ -1,0 +1,24 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzureRmPipeline-conn'
+    subscriptionId: 'e043da6d-062b-4f71-a88b-a52765a0ec9a'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'arm-vscode'
+    location: 'Australia East'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://abcipxs5yzo4rp42.blob.core.windows.net/files/azuredeploy.json'
+    overrideParameters: '-storageAccountNamePrefix dev'
+    deploymentMode: 'Incremental'
