@@ -37,7 +37,6 @@ steps:
     scriptLocation: 'inlineScript'
     # inlineScript: 'az account show'
     inlineScript: |
-      az login
       az role assignment create --role "Storage Blob Data Contributor" --assignee admin1@alexfrqgmail.onmicrosoft.com --scope "/subscriptions/e043da6d-062b-4f71-a88b-a52765a0ec9a/resourceGroups/arm-vscode/providers/Microsoft.Storage/storageAccounts/devipxs5yzo4rp42"
     useGlobalConfig: true
     
