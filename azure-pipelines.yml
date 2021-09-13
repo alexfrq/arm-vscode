@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
 
 steps:
 # - task: AzureResourceManagerTemplateDeployment@3
@@ -30,24 +30,23 @@ steps:
 #     inlineScript: 'az role assignment create --role "Storage Blob Data Contributor" --assignee admin1@alexfrqgmail.onmicrosoft.com --scope "/subscriptions/e043da6d-062b-4f71-a88b-a52765a0ec9a/resourceGroups/arm-vscode/providers/Microsoft.Storage/storageAccounts/devipxs5yzo4rp42"'
     # inlineScript: 'az account show'
     
-# - task: AzureCLI@2
-#   inputs:
-#     azureSubscription: 'AzureRmPipeline-conn'
-#     scriptType: 'bash'
-#     scriptLocation: 'inlineScript'
-#     # inlineScript: 'az account show'
-#     inlineScript: |
-#       az role assignment create --role "Storage Blob Data Contributor" --assignee admin1@alexfrqgmail.onmicrosoft.com --scope "/subscriptions/e043da6d-062b-4f71-a88b-a52765a0ec9a/resourceGroups/arm-vscode/providers/Microsoft.Storage/storageAccounts/devipxs5yzo4rp42"
-#     useGlobalConfig: true
-    
-- task: AzurePowerShell@5
+- task: AzureCLI@2
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
-    ScriptType: 'InlineScript'
-    Inline: |
-      try {
-        New-AzRoleAssignment -SignInName admin1@alexfrqgmail.onmicrosoft.com -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/e043da6d-062b-4f71-a88b-a52765a0ec9a/resourceGroups/arm-vscode/providers/Microsoft.Storage/storageAccounts/devipxs5yzo4rp42"
-      } catch {
-        Write-Warning $Error[0]
-      }
-    azurePowerShellVersion: 'LatestVersion'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    # inlineScript: 'az account show'
+    inlineScript: |
+      az role assignment create --role "Storage Blob Data Contributor" --assignee admin1@alexfrqgmail.onmicrosoft.com --scope "/subscriptions/e043da6d-062b-4f71-a88b-a52765a0ec9a/resourceGroups/arm-vscode/providers/Microsoft.Storage/storageAccounts/devipxs5yzo4rp42"
+    
+# - task: AzurePowerShell@5
+#   inputs:
+#     azureSubscription: 'AzureRmPipeline-conn'
+#     ScriptType: 'InlineScript'
+#     Inline: |
+#       try {
+#         New-AzRoleAssignment -SignInName admin1@alexfrqgmail.onmicrosoft.com -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/e043da6d-062b-4f71-a88b-a52765a0ec9a/resourceGroups/arm-vscode/providers/Microsoft.Storage/storageAccounts/devipxs5yzo4rp42"
+#       } catch {
+#         Write-Warning $Error[0]
+#       }
+#     azurePowerShellVersion: 'LatestVersion'
