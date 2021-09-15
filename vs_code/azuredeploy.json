@@ -102,7 +102,7 @@
                     "initialWorkspaceAdminObjectId": "bb6b478d-fe4a-4440-87a7-7786dd8bb10f"
                 },
                 "defaultDataLakeStorage": {
-                    "accountUrl": "[variables('storageAccountName')]",
+                    "accountUrl": "[concat('https://',variables('storageAccountName'),'.dfs.core.windows.net')]",
                     "filesystem": "system"
                 },
                 "virtualNetworkProfile": {
