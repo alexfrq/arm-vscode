@@ -88,7 +88,45 @@
             "properties": {
                 "publicAccess": "None"
             }
-        }    
+        },
+        {
+            "type": "Microsoft.Synapse/workspaces",
+            "apiVersion": "2019-06-01-preview",
+            "name": "20210915synapsealexfrq",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "cspWorkspaceAdminProperties": {
+                    "initialWorkspaceAdminObjectId": "bb6b478d-fe4a-4440-87a7-7786dd8bb10f"
+                },
+                "defaultDataLakeStorage": {
+                    "accountUrl": "[variables('storageAccountName')]",
+                    "filesystem": "system"
+                },
+                "virtualNetworkProfile": {
+                    "computeSubnetId": ""
+                },
+                "sqlAdministratorLogin": "sqladminuser",
+                "encryption": {}
+            },
+            "resources": [
+                {
+                    "type": "firewallrules",
+                    "apiVersion": "2019-06-01-preview",
+                    "name": "allowAll",
+                    "location": "[resourceGroup().location]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Synapse/workspaces/20210915synapsealexfrq')]"
+                    ],
+                    "properties": {
+                        "startIpAddress": "0.0.0.0",
+                        "endIpAddress": "255.255.255.255"
+                    }
+                }
+            ]
+        }            
     
     ],
     "outputs": {
