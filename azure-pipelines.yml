@@ -37,8 +37,11 @@ steps:
     scriptLocation: 'inlineScript'
     # inlineScript: 'az account show'
     inlineScript: |
-      az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id 20d9d583-2750-46cc-b9bd-8d65c575ea1d --scope "/subscriptions/e043da6d-062b-4f71-a88b-a52765a0ec9a/resourceGroups/arm-vscode/providers/Microsoft.Storage/storageAccounts/devipxs5yzo4rp42"
-    
+      az role assignment create 
+    arguments:
+      -role "Storage Blob Data Contributor" `
+      -assignee-object-id 20d9d583-2750-46cc-b9bd-8d65c575ea1d `
+      -scope "/subscriptions/e043da6d-062b-4f71-a88b-a52765a0ec9a/resourceGroups/arm-vscode/providers/Microsoft.Storage/storageAccounts/devipxs5yzo4rp42"
 # - task: AzurePowerShell@5
 #   inputs:
 #     azureSubscription: 'AzureRmPipeline-conn'
